@@ -6,35 +6,23 @@ function titleCase(str) {
 	return splitStr.join(' '); 
 }
 const subjects = {
-	l1: {
-		subj: ["english", "higher mother tongue language"]
-	},
-	r1: {
-		subj: ["humanities", "higher art", "higher music", "malay (special programme)", "chinese (special programme)"]
-	},
-	r2: {
-		subj: ["mathematics", "science"]
-	},
-	r3: {
-		subj: ["humanities", "higher art", "higher music", "malay (special programme)", "chinese (special programme)", "mathematics", "science"]
-	},
-	r4: {
-		subj: null,
-	},
-	r5: {
-		subj: null,
-	}
+	l1: ["english", "higher mother tongue language"],
+	r1: ["humanities", "higher art", "higher music", "malay (special programme)", "chinese (special programme)"],
+	r2: ["mathematics", "science"],
+	r3: ["humanities", "higher art", "higher music", "malay (special programme)", "chinese (special programme)", "mathematics", "science"],
+	r4: null,
+	r5: null
 }
 const subjSec = document.getElementById("subj")
 Object.keys(subjects).forEach(subject => {
- 	const subjs = document.createElement("p");
-	subjs.innerText = "Subjects: " + (subjects[subject].subj == null ? titleCase("any relevant subject") : titleCase(subjects[subject].subj.join(" / ")));
 	const label = document.createElement("label");
 	label.innerText = subject.toUpperCase() + " Grade:";
 	const input = document.createElement("input");
 	input.type = "number";
 	input.min = input.value = 1;
 	input.max = 9;
+	const subjs = document.createElement("p");
+	subjs.innerText = "Subjects: " + (subjects[subject] == null ? titleCase("any relevant subject") : titleCase(subjects[subject].join(" / ")));
 	subjSec.appendChild(label);
 	label.appendChild(input);
 	subjSec.appendChild(subjs);
