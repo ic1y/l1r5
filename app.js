@@ -1,3 +1,4 @@
+// https://stackoverflow.com/a/32589289
 function titleCase(str) {
 	var splitStr = str.toLowerCase().split(' ');
 	for (var i = 0; i < splitStr.length; i++) {
@@ -22,7 +23,7 @@ Object.keys(subjects).forEach(subject => {
 	input.min = input.value = 1;
 	input.max = 9;
 	const subjs = document.createElement("p");
-	subjs.innerText = "Subjects: " + (subjects[subject] == null ? titleCase("any relevant subject") : titleCase(subjects[subject].join(" / ")));
+	subjs.innerText = titleCase(subject + " Subjects: " + (subjects[subject] == null ? "any relevant subject" : subjects[subject].join(" / ")));
 	subjSec.appendChild(label);
 	label.appendChild(input);
 	subjSec.appendChild(subjs);
@@ -38,12 +39,10 @@ const bSection = document.getElementById("opt");
 for (let i = 0; i < bonuses.length; i++) {
 	const tick = document.createElement("input");
 	tick.type = "checkbox";
-	tick.id = "b" + i;
 	tick.dataset.p = bonuses[i].points;
 	const label = document.createElement("label");
-	label.setAttribute("for","b" + i)
 	label.innerText = bonuses[i].req + ` (${bonuses[i].points} points)`;
-	bSection.appendChild(tick);
+	label.prepend(tick);
 	bSection.appendChild(label);
 	bSection.appendChild(document.createElement("br"));
 }
