@@ -33,7 +33,8 @@ const bonuses = [
 	{req: "Good CCA grade", points: 1},
 	{req: "A1 to C6 for English and HMTL grade", points: 2},
 	{req: "A1 to C6 for Chinese or Malay (Special Programmes) or Bahasa Indonesia", points: 2},
-	{req: "Selection of affiliated JC in 1st choice or as in 1st and 2nd choice", points: 2}
+	{req: "Selection of affiliated JC in 1st choice or as in 1st and 2nd choice", points: 2},
+	{req: "Am selected for Chinese / Malay / Tamil Language Elective programmes offered in some JCs", points: 2}
 ]
 const bSection = document.getElementById("opt");
 for (let i = 0; i < bonuses.length; i++) {
