@@ -1,11 +1,3 @@
-// https://stackoverflow.com/a/32589289
-function titleCase(str) {
-	var splitStr = str.toLowerCase().split(' ');
-	for (var i = 0; i < splitStr.length; i++) {
-			splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-	}
-	return splitStr.join(' '); 
-}
 const subjects = {
 	l1: ["english", "higher mother tongue language"],
 	r1: ["humanities", "higher art", "higher music", "malay (special programme)", "chinese (special programme)"],
@@ -23,7 +15,12 @@ Object.keys(subjects).forEach(subject => {
 	input.min = input.value = 1;
 	input.max = 9;
 	const subjs = document.createElement("p");
-	subjs.innerText = titleCase(subject + " Subjects: " + (subjects[subject] == null ? "any relevant subject" : subjects[subject].join(" / ")));
+	subjs.innerText =
+		subject.toUpperCase() +
+		" Subjects: " +
+		(subjects[subject] == null
+			? "Any Relevant Subject"
+			: subjects[subject].join(" / ").toUpperCase());
 	subjSec.appendChild(label);
 	label.appendChild(input);
 	subjSec.appendChild(subjs);
@@ -42,7 +39,7 @@ for (let i = 0; i < bonuses.length; i++) {
 	tick.type = "checkbox";
 	tick.dataset.p = bonuses[i].points;
 	const label = document.createElement("label");
-	label.innerText = bonuses[i].req + ` (${bonuses[i].points} points)`;
+	label.innerText = `${bonuses[i].req} (${bonuses[i].points} points)`;
 	label.prepend(tick);
 	bSection.appendChild(label);
 	bSection.appendChild(document.createElement("br"));
@@ -50,12 +47,12 @@ for (let i = 0; i < bonuses.length; i++) {
 function calculate() {
 	let points = 0;
 	document.querySelectorAll("input").forEach(inp => {
-		switch(inp.type) {
+		switch (inp.type) {
 			case "number": 
-			if(inp.id != "res") points += Number(inp.value);
+			if (inp.id != "res") points += Number(inp.value);
 			break;
 			case "checkbox":
-			if(inp.checked) points -= inp.dataset.p;
+			if (inp.checked) points -= inp.dataset.p;
 			break;
 		}	
 	})
